@@ -1,0 +1,46 @@
+html{
+	height:100%
+}
+body{
+	background-color: black;
+	color: white;
+	min-height:100%;
+	position:relative;
+}
+table {
+	width:100%;
+}
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;    
+}
+#submit{
+	margin-left:33%;
+	margin-right:66%;
+	width: 448px;
+	text-align: right ;	
+}
+#all{
+	padding-bottom:20px
+}
+#foot{
+	width:100%;
+	position:absolute;
+	height:20px;
+	bottom:0;
+	left:0;
+	width:100%;
+	text-align: center;	
+}
+.error {
+	color:black;
+	background-color: red;
+	width:100%;
+	padding: 10px;
+    font-weight: bold;
+	text-align: center;
+}
