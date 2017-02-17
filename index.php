@@ -22,32 +22,37 @@
 							echo "<div class='error'>Wszytkie pola muszą być wypełnione!!!</div>";
 						}
 						else{
-							if(!is_string($_POST["name"]) ||  !is_string($_POST["surname"])){
-								echo "<div class='error'>Imię i nazwisko muszą być tekstem!!!</div>";
+							if(strpos($_POST["name"], "\n") || strpos($_POST["surname"], "\n") || strpos($_POST["problem_1"], "\n") || strpos($_POST["problem_2"], "\n") || strpos($_POST["problem_3"], "\n") || strpos($_POST["problem_4"], "\n")  ) {
+								echo "<div class='error'>Pola nie mogą zawierać znaków nowej linii!!!</div>";
 							}
 							else{
-								if( strlen($_POST["name"])>32+1 ||  strlen($_POST["surname"])>32+1 ){
-									echo "<div class='error'>Imię i nazwisko nie mogą być dłuższe niż 32 znaki!!!</div>";
+								if(!is_string($_POST["name"]) ||  !is_string($_POST["surname"])){
+									echo "<div class='error'>Imię i nazwisko muszą być tekstem!!!</div>";
 								}
 								else{
-									$name = $_POST["name"];
-									$surname = $_POST["surname"];
-									$problem_1 = $_POST["problem_1"];
-									$problem_2 = $_POST["problem_2"];
-									$problem_3 = $_POST["problem_3"];
-									$problem_4 = $_POST["problem_4"];
-									if(!is_numeric($_POST["problem_1"]) || !is_numeric($_POST["problem_2"]) || !is_numeric($_POST["problem_3"]) || !is_numeric($_POST["problem_4"])){
-										echo "<div class='error'>Wynik musi być liczbą!!!</div>";
+									if( strlen($_POST["name"])>32+1 ||  strlen($_POST["surname"])>32+1 ){
+										echo "<div class='error'>Imię i nazwisko nie mogą być dłuższe niż 32 znaki!!!</div>";
 									}
 									else{
-										if( 0>$_POST["problem_1"] || 0>$_POST["problem_2"] || 0>$_POST["problem_3"] || 0>$_POST["problem_4"] || 100<$_POST["problem_1"] || 100<$_POST["problem_2"] || 100<$_POST["problem_3"] || 100<$_POST["problem_4"] ){
-											echo "<div class='error'>Wynik musi być liczbą z przedziału [0,100]!!!</div>";
+										$name = $_POST["name"];
+										$surname = $_POST["surname"];
+										$problem_1 = $_POST["problem_1"];
+										$problem_2 = $_POST["problem_2"];
+										$problem_3 = $_POST["problem_3"];
+										$problem_4 = $_POST["problem_4"];
+										if(!is_numeric($_POST["problem_1"]) || !is_numeric($_POST["problem_2"]) || !is_numeric($_POST["problem_3"]) || !is_numeric($_POST["problem_4"])){
+											echo "<div class='error'>Wynik musi być liczbą!!!</div>";
 										}
 										else{
-											$sum = $problem_1+$problem_2+$problem_3+$problem_4;
-											$file =	fopen("rank.txt","a"."\n");
-											fwrite($file,$sum.":".$problem_1.":".$problem_2.":".$problem_3.":".$problem_4.":".$name.":".$surname."\n");
-											fclose($file);
+											if( 0>$_POST["problem_1"] || 0>$_POST["problem_2"] || 0>$_POST["problem_3"] || 0>$_POST["problem_4"] || 100<$_POST["problem_1"] || 100<$_POST["problem_2"] || 100<$_POST["problem_3"] || 100<$_POST["problem_4"] ){
+												echo "<div class='error'>Wynik musi być liczbą z przedziału [0,100]!!!</div>";
+											}
+											else{
+												$sum = $problem_1+$problem_2+$problem_3+$problem_4;
+												$file =	fopen("rank.txt","a"."\n");
+												fwrite($file,$sum.":".$problem_1.":".$problem_2.":".$problem_3.":".$problem_4.":".$name.":".$surname."\n");
+												fclose($file);
+											}
 										}
 									}
 								}
