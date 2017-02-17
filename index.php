@@ -105,21 +105,21 @@
 						}
 					}
 					echo "<tr>";
-					echo "<td><htmlspecialchars>".$lv."</htmlspecialchars></td>";
+					echo "<td>".htmlspecialchars($lv)."</td>";
 					for($j=0;$j<1;$j++){
-						echo "<td><htmlspecialchars>";
-							echo $rank[$i][$j];
-						echo "</htmlspecialchars></td>";
+						echo "<td>";
+							echo htmlspecialchars($rank[$i][$j]);
+						echo "</td>";
 					}
 					for($j=5;$j<7;$j++){
-						echo "<td><htmlspecialchars>";
-							echo $rank[$i][$j];
-						echo "</htmlspecialchars></td>";
+						echo "<td>";
+							echo htmlspecialchars($rank[$i][$j]);
+						echo "</td>";
 					}
 					for($j=1;$j<5;$j++){
-						echo "<td><htmlspecialchars>";
-							echo $rank[$i][$j];
-						echo "</htmlspecialchars></td>";
+						echo "<td>";
+							echo htmlspecialchars($rank[$i][$j]);
+						echo "</td>";
 					}
 
 					echo "</tr>";
